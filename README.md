@@ -1,3 +1,3 @@
 # symfony-shorturl
 
-# SYMFONY İLE URL KISALTMA UYGULAMASI ÖDEVİ
+# Symfony İle Uri Kısaltma Uygulaması Ödevi
