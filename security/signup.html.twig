@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign Up!{% endblock %}
+
+{% block body %}
+    <div class="col w-50p">
+
+        <img src="img/logo.jpeg"/>
+    </div>
+    <div class="container">
+        <form method="post">
+
+            <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-yellow-400">
+                <div class="max-w-md w-full space-y-8">
+                    <div>
+                        <img class="mx-auto h-24 w-auto" src="img/logo.jpg">
+                        <h1 class="h3 mb-3 font-weight-normal"> Giriş Yap</h1> >
+                    </div>
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}
+                    {% if error %}
+                        <div class="mt-2 mb-2 bg-read-500 text-white px-2 py-3 text-center rounded-md">{{ error.messageKey|trans(error.messageData,'security') }}</div>
+                    {% endif %}
+                    <div class="container">
+                        <form class="mt-8 space-y-6" action="#" method="POST">
+                            <div class="social-sign-in">
+                                <a id="google-sign-up" rel="nofollow" href="/a/add_google_account?rd=%2F" class="susi-btn social-susi-btn button" data-network="google"><img src="//d1ayxb9ooonjts.cloudfront.net/8bc625062aeffa94729b9336243bed9d.svg" alt="Google" width="20"><span class="sign-up-text">Sign up with Google</span></a>
+                                <br>
+                            </div>
+
+                        <div class="container">
+                            <input type="hidden" name="remember" value="true">
+                            <br>
+                            <div class="rounded-md shadow-sm mt-2">
+                                <div>
+                                    <br>
+                                    <label for="inputEmail">Email</label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                                </div>
+                                <div>
+                                    <br>
+                                    <label for="inputPassword">Username</label>
+                                    <input type="pusername" name="username" id="inputusername" class="form-control" required>
+                                </div>
+                                <div>
+                                    <br>
+                                    <br>
+                                    <label for="inputPassword">Password</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {#   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> #}
+            </div>
+
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                {#
+                Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                See https://symfony.com/doc/current/security/remember_me.html
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Remember me
+                    </label>
+                </div>
+                #}
+                <div>
+                    <button class="btn btn-lg btn-primary" type="submit">
+        <span class="absolute left-0 inset-y-0 flex items-cener pl-3">
+
+        </span>
+                        Sign in
+                    </button>
+                </div>
+        </form>
+    </div>
+    </div>
+    </form>
+{% endblock %}
